@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instant Meme Generator</title>
+<style>
+    body { font-family: Arial, sans-serif; background: #f0f0f0; text-align: center; padding: 50px; }
+    input, button { padding: 10px; margin: 10px; width: 300px; }
+    img { margin-top: 20px; max-width: 90%; border: 2px solid #ccc; border-radius: 8px; }
+</style>
+</head>
+<body>
+
+<h1>Instant Meme Generator</h1>
+<input type="text" id="prompt" placeholder="Type your meme text here..." />
+<br>
+<button onclick="generateMeme()">Generate Meme</button>
+
+<div id="memeContainer">
+    <p id="placeholderText">Your meme will appear here.</p>
+</div>
+
+<script>
+async function generateMeme() {
+    const prompt = document.getElementById('prompt').value;
+    if(!prompt) return alert("Please enter a meme text!");
+
+    const container = document.getElementById('memeContainer');
+    container.innerHTML = "<p>Generating meme...</p>";
+
+    // --- Demo placeholder --- 
+    // Replace below with actual backend API call to OpenAI/DALL·E
+    setTimeout(() => {
+        const img = document.createElement('img');
+        img.src = "https://via.placeholder.com/600x400.png?text=" + encodeURIComponent(prompt);
+        container.innerHTML = "";
+        container.appendChild(img);
+    }, 1000);
+}
+</script>
+
+</body>
+</html>
